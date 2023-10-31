@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #f0f0f0;
+}
+
+form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0.95;
+    transition: background-color 0.3s;
+}
+
+form:hover {
+    background-color: #383838;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #8a2be2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+button:hover {
+    background-color: #6b229b;
+}
+</style>
+
+<h1>Ingreso en Detalle</h1>
+
+{{ error }}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Actualizar</button>
+</form>
+
+<form action="{% url 'deleteIngreso' ingreso.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Eliminar</button>
+</form>
+
+{% endblock %}

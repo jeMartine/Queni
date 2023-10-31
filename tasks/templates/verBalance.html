@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #222;
+        color: #fff;
+    }
+
+    .container {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    h1 {
+        color: #ffffff;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #ffffff;
+    }
+
+    input[type="date"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button[type="submit"] {
+        margin-top: 10px;
+        padding: 8px 15px;
+        background-color: #8a2be2;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .balance-results {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #333;
+        border-radius: 5px;
+    }
+
+    .gastos-list,
+    .ingresos-list {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #333;
+        border-radius: 5px;
+    }
+
+    .gastos-list ul,
+    .ingresos-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .gastos-list h2,
+    .ingresos-list h2 {
+        color: #8a2be2;
+    }
+
+    .download-link {
+        display: block;
+        margin-top: 20px;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .download-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="container">
+    <h1>Balance Mensual</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="fecha_inicio">Fecha de Inicio:</label>
+        <input type="date" name="fecha_inicio" required>
+        <label for="fecha_fin">Fecha de Fin:</label>
+        <input type="date" name="fecha_fin" required>
+        <br>
+        <button type="submit">Generar Informe</button>
+    </form>
+
+    {% if gastos and ingresos %}
+    <div class="balance-results">
+        <h2>Resumen</h2>
+        <p>Total de Gastos: ${{ total_gastos }}</p>
+        <p>Total de Ingresos: ${{ total_ingresos }}</p>
+        <p>Balance: ${{ balance }}</p>
+    </div>
+
+    <div class="gastos-list">
+        <h2>Gastos</h2>
+        <ul>
+            {% for gasto in gastos %}
+            <li>{{ gasto.Nombre }} - ${{ gasto.Valor }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="ingresos-list">
+        <h2>Ingresos</h2>
+        <ul>
+            {% for ingreso in ingresos %}
+            <li>{{ ingreso.Nombre }} - ${{ ingreso.Cantidad }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Enlace para descargar el informe -->
+    <a class="download-link" href="{% url 'verBalance_pdf' %}?fecha_inicio={{ request.POST.fecha_inicio }}&fecha_fin={{ request.POST.fecha_fin }}">
+        Descargar Informe en PDF
+    </a>
+    {% endif %}
+</div>
+{% endblock %}

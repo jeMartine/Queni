@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queni - Crear Gastos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+    
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+    
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+    
+        .form-container h1 {
+            margin-bottom: 20px;
+            color: #8a2be2;
+        }
+    
+        form {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    
+        form button {
+            display: block;
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: #8a2be2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        form button:hover {
+            background-color: #6b229b;
+        }
+    
+        form input[type="text"],
+        form input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+    
+        form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Crear Gastos</h1>
+            {{ error }}
+            <form action="{% url 'crearGastos' %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Guardar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
+
+
+
+

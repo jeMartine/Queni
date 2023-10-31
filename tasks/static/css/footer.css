@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    margin-top: auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.footer {
+    background-color: #F8F8F8; 
+    border: 1px solid #9DA3B1; 
+    text-align: center;
+    width: 99.8%;
+    margin-top: auto;
+    align-items: center;
+    display: flex;
+}
+
+.content {
+    position: relative;
+    text-align: left;
+}
+.logo {
+    width: 10%;
+}
+
+.texto {
+    width: 25%;
+}

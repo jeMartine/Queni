@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Estadísticas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h2>Estadísticas</h2>
+    <p>Ingresos en el rango de fechas: {{ ingresos.Cantidad__sum }}</p>
+    <p>Gastos en el rango de fechas: {{ gastos.Valor__sum }}</p>
+    <p>Saldo en el rango de fechas: {{ saldo }}</p>
+
+    <canvas id="grafico"></canvas>
+
+    <script>
+        var ctx = document.getElementById('grafico').getContext('2d');
+        var ingresos = {{ ingresos.Cantidad__sum }};
+        var gastos = {{ gastos.Valor__sum }};
+        var saldo = {{ saldo }};
+        
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Ingresos', 'Gastos', 'Saldo'],
+                datasets: [{
+                    label: 'Cantidad',
+                    data: [ingresos, gastos, saldo],
+                    backgroundColor: [
+                        'rgba(128, 0, 128, 0.5)',  // Morado oscuro
+                        'rgba(139, 0, 139, 0.5)',  // Morado medio
+                        'rgba(148, 0, 211, 0.5)'   // Morado claro
+                    ],
+                    borderColor: [
+                        'rgba(128, 0, 128, 1)',
+                        'rgba(139, 0, 139, 1)',
+                        'rgba(148, 0, 211, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queni - Signup</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            background-image: radial-gradient(ellipse at center, #111 0%, #000 100%);
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .form-container h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form button {
+            display: block;
+            margin-top: 15px; 
+            padding: 8px 5px;
+            background-color: #8a2be2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.5s;
+        }
+
+        form button:hover {
+            background-color: #6b229b;
+        }
+
+        form input[type="text"],
+        form input[type="password"] {
+            width: 90%;
+            padding: 7px;
+            margin-top: 10px; 
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form label {
+            display: block;
+            margin-top: 15px; 
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Signup</h1>
+            {{error}}
+            <form action="/signup/" method="POST">
+                {% csrf_token %}
+                <label for="{{ form.username.id_for_label }}">Username:</label>
+                {{ form.username }}
+                <label for="{{ form.password1.id_for_label }}">Password:</label>
+                {{ form.password1 }}
+                <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+                {{ form.password2 }}
+                <button type="submit">Signup</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Queni sign in</title>
+        <link rel="stylesheet" type="text/css" href='{% static "css/signin.css" %}'>
+    </head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <img src='{% static "images/logoNombre.png"%}'>
+            <p>
+            <input type="text" placeholder="Nombre de usuario o correo" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+            </p>
+            <p>
+            <input type="password" placeholder="Contraseña" name="password" autocomplete="current-password" required="" id="id_password">
+            </p>
+            <p>¿No registrado? <a href="/signup">crea tu cuenta ahora</a></p>
+            
+            <button class="btn-iniciar-sesion">Iniciar sesión</button>
+            <button class="btn-cancelar">Cancelar</button>
+            
+            <p><a href="/signup">Olvidé mi contraseña</a></p>
+        </div>
+    </div>
+
+
+    {% include 'footer.html' %}
+    
+</body>
+</html>
+

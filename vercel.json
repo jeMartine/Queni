@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src": "Queni/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "Queni/wsgi.py"
+        }
+    ]
+}

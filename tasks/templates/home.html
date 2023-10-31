@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queni - Página de Inicio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            background-image: radial-gradient(ellipse at center, #111 0%, #000 100%);
+            background-size: cover;
+            animation: backgroundAnimation 10s ease-in-out infinite alternate;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .title-container {
+            border: 2px solid #fff;
+            padding: 10px 20px;
+            animation: titleAnimation 1s ease-in-out infinite alternate, titleColorAnimation 2s ease-in-out infinite alternate;
+        }
+
+        .title {
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .description {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: #ccc;
+        }
+
+        @keyframes titleAnimation {
+            from {
+                border-color: #9042da;
+            }
+            to {
+                border-color: #3f0f61;
+            }
+        }
+
+        @keyframes titleColorAnimation {
+            from {
+                color: #8a2be2;
+            }
+            to {
+                color: #f3f3f3;
+            }
+        }
+
+        @keyframes backgroundAnimation {
+            from {
+                background-color: #000;
+            }
+            to {
+                background-color: #d5d0d6;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title-container">
+            <h1 class="title">Queni</h1>
+        </div>
+        <p class="description">La aplicación para manejar las finanzas de tu hogar</p>
+    </div>
+</body>
+</html>
+
+{% endblock %}

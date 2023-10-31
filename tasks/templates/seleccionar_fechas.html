@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seleccionar fechas</title>
+</head>
+<body>
+    <h2>Selecciona un rango de fechas</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="start_date">Fecha de inicio:</label>
+        <input type="date" id="start_date" name="start_date">
+        <label for="end_date">Fecha de fin:</label>
+        <input type="date" id="end_date" name="end_date">
+        <input type="submit" value="Obtener estadísticas">
+    </form>
+</body>
+</html>
+{% endblock %}

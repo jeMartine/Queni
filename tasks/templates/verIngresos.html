@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+        font-family: Arial, sans-serif;
+    }
+    
+    .ingresos-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .ingreso-item {
+        background-color: #2a2a2a;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        opacity: 0.95;
+        transition: background-color 0.3s;
+    }
+
+    .ingreso-item:hover {
+        background-color: #383838;
+    }
+
+    .ingreso-title {
+        font-size: 1.3rem;
+        margin: 0;
+        color: #d38dfc;
+    }
+
+    .ingreso-amount {
+        font-size: 1.1rem;
+        margin: 5px 0;
+        color: #c0c0c0;
+    }
+
+    .ingreso-username {
+        font-size: 0.9rem;
+        color: #a0a0a0;
+    }
+    .date-created {
+        font-size: 0.9rem;
+        color: #a0a0a0;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        font-size: 2rem;
+        color: #f0f0f0;
+    }
+</style>
+
+<div class="container">
+    <h1>Ingresos Existentes</h1>
+
+    <ul class="ingresos-list">
+        {% for IngresarIngresos in Ingresos %}
+        <li class="ingreso-item">
+            <a href="{% url 'ingresoDetail' IngresarIngresos.id %}">
+                <h2 class="ingreso-title">{{ IngresarIngresos.Nombre }}</h2>
+                <p class="ingreso-amount">Cantidad: {{ IngresarIngresos.Cantidad }}</p>
+                <p class="ingreso-username">Usuario: {{ IngresarIngresos.user.username }}</p>
+                <p class="date-created">Fecha de Registro: {{ IngresarIngresos.FechaDeRegistro|date:'M j, Y H:i' }}</p>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

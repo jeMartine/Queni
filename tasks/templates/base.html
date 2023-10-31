@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queni Application</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            margin: 0 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            display: block;
+        }
+
+        a:hover {
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #d38dfc;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Home</a>    
+            </li>
+            {% if user.is_authenticated %}
+            <li>
+                <a href="/logout">Logout</a>    
+            </li>
+            <li>
+                <a href="/ingresarIngresos">Ingresar Ingresos</a>    
+            </li>
+            <li>
+                <a href="/verIngresos">Ver Ingresos</a>    
+            </li>
+            <li>
+                <a href="/verGastos/crearGastos/">Crear Gastos</a>
+            </li>
+            <li>
+                <a href="/verGastos">Gastos Existentes</a>    
+            </li>
+            <li>
+                <a href="/verGastos/completados/">Gastos Completados</a>    
+            </li>
+            <li>
+                <a href="{% url 'verBalance' %}">Ver Balance</a>
+            </li>
+            
+            <li>
+                <a href="{% url 'estadisticas' %}">Ver Estadísticas</a>
+            </li>
+
+            <li>
+                <a href="{% url 'lista_grupos' %}">Grupos</a>
+            </li>
+            
+            {% else %}
+            <li>
+                <a href="/signup">Signup</a>    
+            </li>
+            <li>
+                <a href="/signin">Login</a>    
+            </li>
+            {% endif %}
+            {% if Grupos %}
+            <li>
+                <a href="{% url 'crear_grupo' %}">Crear Grupos</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+    
+</body>
+</html>

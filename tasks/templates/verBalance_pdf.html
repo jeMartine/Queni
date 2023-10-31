@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Balance Mensual</title>
+    <style>
+        /* Estilos CSS aquí */
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .balance-results {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .gastos-list,
+        .ingresos-list {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .gastos-list ul,
+        .ingresos-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .gastos-list h2,
+        .ingresos-list h2 {
+            color: #333;
+        }
+
+        .grafico-img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .consejos {
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .consejos h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Informe de Balance Mensual</h1>
+        
+        <div class="balance-results">
+            <h2>Resumen</h2>
+            <p>Total de Gastos: ${{ total_gastos }}</p>
+            <p>Total de Ingresos: ${{ total_ingresos }}</p>
+            <p>Balance: ${{ balance }}</p>
+        </div>
+
+        <div class="gastos-list">
+            <h2>Gastos</h2>
+            <ul>
+                {% for gasto in gastos %}
+                <li>{{ gasto.Nombre }} - ${{ gasto.Valor }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="ingresos-list">
+            <h2>Ingresos</h2>
+            <ul>
+                {% for ingreso in ingresos %}
+                <li>{{ ingreso.Nombre }} - ${{ ingreso.Cantidad }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="consejos">
+            <h2>Consejos</h2>
+            {% if consejos %}
+                <p>{{ consejos }}</p>
+            {% else %}
+                <p>No hay consejos disponibles.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

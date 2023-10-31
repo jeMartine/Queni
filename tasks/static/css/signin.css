@@ -1,0 +1,68 @@
+body {
+    background-color: #F8F8F8;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+
+img {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container{
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5%;
+    border: 1px solid #9DA3B1; 
+    text-align: center;
+    justify-content: space-between;
+}
+
+
+.btn-iniciar-sesion {
+    background-color: #7957D5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 10px; 
+    text-align: center;
+    font-size: 15px;
+}
+
+
+.btn-cancelar {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 15px;
+}
+.form-container input[type="text"],
+.form-container input[type="password"] {
+    font-size: 15px; /* Establece el tamaño del texto dentro de los campos de entrada */
+    padding: 5px; /* Establece el espacio entre el borde y el texto dentro de los campos de entrada */
+    width: 90%; /* Establece el ancho del campo de entrada al 100% del contenedor */
+    margin-bottom: 10px; /* Establece el margen inferior para separar los campos de entrada */
+}
+
+a {
+    color: #3F2AED;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+p{
+    font-size: 14px;
+}
